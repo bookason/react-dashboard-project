@@ -1,0 +1,37 @@
+{
+  "appusers": [
+    {
+      "0": {
+        "firstname": "",
+        "lastname": "",
+        "email": "",
+        "role": ""
+      },
+      "firstname": "Chukwuebuka",
+      "lastname": "Ike",
+      "email": "carolineeze@hotmail.com",
+      "role": "writer",
+      "id": 1
+    },
+    {
+      "0": {
+        "0": {
+          "firstname": "",
+          "lastname": "",
+          "email": "",
+          "role": ""
+        },
+        "firstname": "Chukwuebuka",
+        "lastname": "Ike",
+        "email": "carolineeze@hotmail.com",
+        "role": "writer",
+        "id": 1
+      },
+      "firstname": "chison",
+      "lastname": "Ike",
+      "email": "carol@hotmail.com",
+      "role": "developer",
+      "id": 2
+    }
+  ]
+}

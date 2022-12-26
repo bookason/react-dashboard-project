@@ -1,0 +1,76 @@
+import React, { useState, useEffect } from "react";
+import api from '../api/appusers'
+
+const url = "http://localhost:3500/appusers";
+
+const NewUser = () => {
+  const initialusers = {
+    firstname: "",
+    lastname: "",
+    email: "",
+    role: "",
+    id: "",
+  };
+
+  const [users, setUsers] = useState(initialusers);
+
+  const getUsers = async () =>{
+    const response = await api.get();
+
+    //return response.data;
+    console.log(response.data);
+    let data = response.data
+    setUsers(data)
+    console.log("i am consoling users", users)
+  }
+
+  useEffect(()=>{
+    getUsers();
+  }, [])
+
+  const postUsers = async (e)=>{
+    //e.preventDefault()
+   await api.post("/", users)
+   
+    .then((response) => {
+      console.log(response);
+    }, (error) => {
+      console.log(error);
+    });
+  
+
+   console.log("posted") 
+  }
+
+  const handleUpdate = (e)=>{
+    //e.preventDefault()
+     setUsers((prev)=>({...prev, [e.target.name]: e.target.value} ))
+     console.log(users)
+   }
+  return (
+    <div className="newuser">
+      <h2>Add users</h2>
+
+      <div className="userContentBox">
+
+
+      <div className="addUser">
+      <form action="" className='newUserForm' onSubmit={postUsers}>
+        <input type="text" name = "firstname" placeholder='first name'  onChange={handleUpdate}/>
+        <input type="text" name = "lastname" placeholder='last name' onChange={handleUpdate}/>
+        <input type="email" name = "email" placeholder='email' onChange={handleUpdate}/>
+        <input type="text" name = "role" placeholder='role' onChange={handleUpdate}/>
+        <div style={{display: "flex", justifyContent: "space-around"}}><input type="file" /> <button type="submit" style={{backgroundColor: "teal", color: "white", border: "none", padding: "10px 20px", cursor: "pointer"}}>Submit</button></div>
+        
+      </form>
+      </div>
+
+      <div className="newuserDetail">
+        <h3>You have successfully added: Peter pan</h3>
+      </div>
+      </div>
+    </div>
+  );
+};
+
+export default NewUser;
